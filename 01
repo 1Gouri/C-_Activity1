@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+class Book {
+private:
+    int bookId;
+    string title;
+    string author;
+
+public:
+    // Parameterized constructor to initialize bookId
+    Book(int id) : bookId(id) {}
+
+    // Function to input book details
+    void inputDetails() {
+        cout << "Enter title: ";
+        cin.ignore();  // Clear the input buffer
+        getline(cin, title);
+        cout << "Enter author: ";
+        getline(cin, author);
+    }
+
+    // Function to display book details
+    void displayDetails() const {
+        cout << "Book ID: " << bookId << endl;
+        cout << "Title: " << title << endl;
+        cout << "Author: " << author << endl;
+    }
+};
+
+int main() {
+    const int MAX_BOOKS = 3;  // Maximum number of books
+    Book books[MAX_BOOKS] = {Book(1), Book(2), Book(3)};  // Array of Book objects with unique bookId
+
+    cout << "Library Management System" << endl;
+
+    // Input details for each book
+    for (int i = 0; i < MAX_BOOKS; ++i) {
+        cout << "\nEnter details for Book " << (i + 1) << ":" << endl;
+        books[i].inputDetails();
+    }
+
+    // Display details of all books
+    cout << "\nDisplaying all books:" << endl;
+    for (int i = 0; i < MAX_BOOKS; ++i) {
+        cout << "\nBook " << (i + 1) << " Details:" << endl;
+        books[i].displayDetails();
+    }
+
+    return 0;
+}
